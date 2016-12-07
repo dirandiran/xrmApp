@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/my_db"/>
+        <property name="username" value="root"/>
+        <property name="password" value="qwer"/>
+    </bean>
+
+    <bean class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" id="sessionFactoryManager">
+       <!-- <property name="persistenceUnitName" value="unit"/> -->
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="/WEB-INF/hibernate.cfg.xml" />
+        <property name="packagesToScan" value="xrmApp.entity"/>
+    </bean>
+
+   <!-- <bean id="MySQLdialect" class="org.hibernate.dialect.MySQLDialect"/> <property name="d" ref="MySQLdialect"/> -->
+
+
+    <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactoryManager" />
+    </bean>
+
+</beans>

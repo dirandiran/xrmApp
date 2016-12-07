@@ -1,0 +1,5 @@
+xrmApp\controller\MainController.class
+xrmApp\services\impl\CompanyServiceImpl.class
+xrmApp\services\api\CompanyService.class
+xrmApp\entity\Company.class
+xrmApp\entity\Vacancy.class
